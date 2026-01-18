@@ -1,0 +1,36 @@
+print("Contact Card")
+name = input("Enter your name: ")
+dob = input("Enter your date of birth: ")
+number = input("Enter your phone number: ")
+email = input("Enter your email: ")
+address = input("Enter your address: ")
+
+card = {"name": name, "dob": dob, "number": number, "email": email, "address": address}
+
+print(f"""Hi {card['name']}. Our dictionary says that you were born on {card['dob']}, your phone number is {card['number']}, your email is {card['email']}, and you live at {card['address']}.""")
+
+## day 41
+print("Website Rating")
+name = input("Enter website name: ")
+url = input("Enter website URL: ")
+description = input("Enter website description: ")
+rating = input("Enter website rating in stars out of 5: ")
+
+webDict = {"name": name, "url": url, "description": description, "rating": rating}
+
+for name, value in webDict.items():
+  if name != "rating":
+    print(f"{name}:{value}", end=", ")
+  else:
+    print(f"{name}:{value}")
+
+
+## creating dictionary before - check if it works idk
+websiteDict = {"name": "", "url": "", "description": "", "rating": ""}
+
+for name in websiteDict.keys():
+  websiteDict[name] = input(f"Enter website {name}: ")
+
+print()
+for name, value in websiteDict.items():
+  print(f"{name}: {value}")
