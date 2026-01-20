@@ -6,11 +6,6 @@ list = []
 with open('todo.txt', 'r') as f:
   list = eval(f.read())
 
-def prettyPrint(list):
-  ## could be improved using f-strings extracting the exact item from each array in the 2D array
-  for row in list:
-    print(row, end="\n")
-
 def add():
   task = input("Enter task to be done: ")
   date = input("Enter date due by: ")
@@ -23,14 +18,17 @@ def view(choice):
   ## all
   if choice.lower()[0] == "a":
     print("All tasks:")
-    prettyPrint(list)
+    for row in list:
+      print(f"Task: {row[0]}\nDate Due: {row[1]}\nPriority: {row[2]}")
+      print()
   ## priority
   else:
     priority = input("Enter search priority (high/medium/low): ")
-    print(f"{priority.capitalize()} priority tasks:")
+    print(f"\n{priority.capitalize()} priority tasks:\n")
     for row in list:
       if row[2].lower() == priority.lower():
-        print(row)
+        print(f"Task: {row[0]}\nDate Due: {row[1]}")
+        print()
 
 def remove(task):
   for row in list:
@@ -53,7 +51,6 @@ def edit(task):
       if priority.lower() != "no":
         row[2] = priority
       print("Task edited.")
-
 
 while True:
   print("Life Organizer")
