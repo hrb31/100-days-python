@@ -13,8 +13,14 @@ def new():
   clear_screen()
   print("=== Create an Account ===")
   print()
-  username = input("Username: ")
+  username = input("Username: ").strip()
   password = getpass("Password: ")
+  keys = db.keys()
+  if username in keys:
+    print("\nThat username already exists. Please choose another.")
+    time.sleep(2)
+    return
+
   salt = random.randint(1000,9999)
   newPassword = f"{password}{salt}"
   newPassword = hash(newPassword)
@@ -27,7 +33,7 @@ def login():
   clear_screen()
   print("=== Login ===")
   print()
-  username = input("Username: ")
+  username = input("Username: ").strip()
   password = getpass("Password: ")
   try:
     salt = db[username]["salt"]
